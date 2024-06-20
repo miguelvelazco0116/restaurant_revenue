@@ -5,8 +5,8 @@
 
 
 - [Background](#background)
-- [Introduction](#introduction)
-   + [Data exploring](data_explorer.ipynb)
+- [Data exploration and insights discovery](#Data-exploration-and-insights-discovery)
+   + [notebook](exploring-data.ipynb)
 
 
 ### *`Background`*
@@ -21,7 +21,7 @@ In this analysis, we explore how smart decision-making, strategic planning, and 
 By understanding the importance of effective revenue management, we can implement targeted actions that not only enhance the customer experience but also optimize operational efficiency. Join us as we delve into the transformative potential of combining cutting-edge technology with strategic foresight to elevate your restaurant's financial performance.
 
 
-### *Data Exploration and Market Analysis*
+### *Data exploration and insights discovery*
 
 
 To begin implementing the strategy, we first need to delve into the data to gain a better understanding of market behavior. This detailed analysis will provide the insights necessary to tailor our approach effectively.
