@@ -12,9 +12,9 @@
 - [Revenue Predictions](#Revenue-Predictions)
    + [notebook](revenue-strategy.ipynb)
 - [The Importance of Understanding Machine Learning Predictions](#The-Importance-of-Understanding-Machine-Learning-Predictions)
-   + [notebook](Interpreting-ML-Models---Understanding-Key-Features.ipynb)
+   + [notebook](Interpreting-ML-Models-Understanding-Key-Features.ipynb)
 - [Exploring Hypotheticals to Improve Revenue](#Exploring-Hypotheticals-to-Improve-Revenue)
-   + [notebook](Interpreting-ML-Models---Understanding-Key-Features.ipynb)
+   + [notebook](Interpreting-ML-Models-Understanding-Key-Features.ipynb)
 
 
 ### *`Background`*
