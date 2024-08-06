@@ -17,7 +17,7 @@
    + [notebook](Interpreting-ML-Models-Understanding-Key-Features.ipynb)
 
 
-### *`Background`*
+### *Background*
 
 
 *The Power of Smart Strategies and Data-Driven Decisions*
@@ -109,7 +109,7 @@ The latest chart offers valuable insights into the visitor counts at our establi
 <img src="img/avg_spend_and_price_and_visitors_cuisine.png" alt="avg-spend-price-visitors-cuisine" width="850">
 
 
-`relation among the revenue, the number of visitors and reviews`
+`Relation among the revenue, the number of visitors and reviews`
 
 The radar chart provides some intriguing insights into our culinary offerings. Consistent with previous data, Japanese cuisine generates the highest average monthly revenue, although the figures are quite similar across all types of cuisines. Interestingly, Mexican food, despite not garnering a large number of reviews, maintains a robust visitor count. On the other hand, Italian cuisine, which has slightly more reviews than Mexican, surprisingly sees fewer customers, even with comparable menu prices. This suggests that other variables such as promotions, location, or service quality might be influencing these trends. Currently, we can only speculate whether promotions directly affect customer turnout. In the upcoming sections, we will engage in causal inference analysis to determine the impact of these factors more definitively.
 
@@ -117,7 +117,7 @@ The radar chart provides some intriguing insights into our culinary offerings. C
 <img src="img/radar_chart.png" alt="radar-chart" width="1700">
 
 <!-- #region -->
-### `insights`
+### `Insights`
 
 *Distribution Data Analysis:*
 - The charts reveal mostly typical values across various features with notable exceptions in the revenue data. Japanese cuisine displays extreme revenue values, including some restaurants experiencing negative revenue, indicating financial losses. Conversely, most menu prices and average customer spending lie within the \\$20 to \\$40 range, with minimal marketing expenditure across all establishments.
@@ -615,22 +615,125 @@ DiCE (Diverse Counterfactual Explanations) is an algorithm that helps explain ma
 
 To formulate targeted and effective strategies for revenue enhancement, we can use DiCE to identify which features to adjust and by how much. Here’s how we can apply this approach:
 
-```python
 
-```
+### Evaluating the Impact of Promotions on Customer Visits
 
-```python
+Before proceeding with DiCE scenarios, we observed something notable in our initial analysis: the impact of promotions on the number of customers. The violin plot suggested an increase in customer numbers due to promotions. To confirm whether promotions genuinely cause an increase in customer visits, we need to conduct a causal analysis.
 
-```
+Using the DoWhy package in Python, we can determine if promotions have a causal effect on customer visits and site revenue.
 
-```python
+**Steps for Causal Analysis Using DoWhy**
 
-```
+1. *Define the Causal Graph:* Outline the relationships between variables, including promotions, number of customers, and site revenue.
+2. *Identify Causal Effect:* Use the DoWhy package to identify and quantify the causal effect of promotions on customer visits and revenue.
+3. *Estimate the Causal Effect:* Employ statistical methods to estimate the impact of promotions on the number of customers and site revenue.
+4. *Validate the Analysis:* Test the robustness of the causal effect through various validation methods.
 
-```python
+**Causal Graph**
 
-```
+We start by defining the causal graph, which outlines the direct and indirect paths through which promotions and pricing might influence monthly revenue. This graphical representation helps in visualizing and understanding the potential causal mechanisms at play.
 
-```python
 
-```
+<img src="img/causal-graph.png" alt="causal-graph" width="900">
+
+
+**Identifying and Estimating the Causal Effect**
+
+Our analysis reveals that the number of customers significantly impacts monthly revenue, with smaller contributions from promotions and average customer spending. SHAP values highlight that the number of customers and marketing efforts are the most influential factors, while promotions have only a marginal effect.
+
+
+<img src="img/variance-attribution-do-why.png" alt="variance-attribution-do-why" width="900">
+
+
+**Key Findings from SHAP and Causal Analysis**
+
+1. Number of Customers: The most critical factor influencing monthly revenue. Increasing the customer base leads to a direct and substantial increase in revenue.
+2. Marketing Efforts: Also plays a significant role in driving revenue by attracting more customers.
+3. Promotions: Show a marginal contribution to revenue. While SHAP values indicate their importance, the causal analysis does not strongly attribute changes in revenue to promotions.
+4. Average Customer Spending: Contributes to revenue but is less influential compared to the number of customers and marketing efforts.
+
+**Insights and Hypotheses**
+
+- Marginal Impact of Promotions: Despite their recognized importance in SHAP values, promotions do not show a strong causal effect on revenue in our current findings. This discrepancy suggests that promotions alone may not be sufficient to drive significant revenue increases.
+- Location and Service Quality Hypothesis: The number of customers might depend heavily on the business location (e.g., being situated on an avenue or street with high foot traffic, having parking availability) and the quality of service offered. These factors can influence both the number of customers and the pricing of the menu.
+
+
+<img src="img/revenue-change-attribution-do-why.png" alt="revenue-change-attribution-do-why" width="900">
+
+
+**Drafting a Strategy to Boost Revenue: Insights from Causal Analysis and Scenario Exploration**
+
+After conducting our causal analysis, we determined that promotions do not have a significant causal effect on revenue for each site. With this understanding, we can now proceed with scenario exploration using DiCE (Diverse Counterfactual Explanations) to draft a comprehensive strategy aimed at boosting revenue.
+
+*Key Focus: Increasing Revenue per Customer*
+
+The results clearly indicate that to boost the average revenue of the sites, we must implement a combination of diverse strategies for each feature, with a key focus on increasing the revenue per customer. This approach will optimize the current situation and drive overall revenue growth.
+
+**Scenario 0:**
+
+The table below outlines the necessary changes to improve site revenue. Key highlights include:
+
+- **Number of Customers**: Increase the average number of customers by 12 per site, representing a 28% growth.
+- **Menu Price**: Implement a modest menu price increase of 1.4%.
+- **Revenue per Customer**: The most significant challenge is raising the revenue per customer by 75%, which requires a substantial effort.
+
+
+<img src="img/scenario-0-dice.png" alt="scenario-0-dice" width="500">
+
+
+**Scenario 1:**
+
+In Scenario 1, the analysis reveals the following key targets for revenue improvement:
+
+- **Number of Customers:** Increase the average number of customers by 12 per site, representing a 28% growth.
+- **Menu Price:** Implement a modest menu price increase of 2%.
+- **Revenue per Customer:** The primary challenge is to boost revenue per customer by 92%, a substantial increase that requires strategic efforts.
+
+
+<img src="img/scenario-1-dice.png" alt="scenario-1-dice" width="500">
+
+
+**Scenario 2:**
+
+In the final scenario, we analyze the key features needed to boost site revenue:
+
+- **Number of Customers:** Increase the number of customers by an average of 10 per site, representing a 24% growth. This is the lowest increment compared to previous scenarios.
+- **Menu Price:** Implement a modest menu price increase of 0.84%, the lowest among the scenarios.
+- **Revenue per Customer:** Increase revenue per customer by 90%, a substantial but slightly lower target than the previous scenario.
+- **Marketing Spend:** Increase the average marketing spend by 5%, the highest increment compared to the other scenarios.
+
+
+<img src="img/scenario-2-dice.png" alt="scenario-2-dice" width="500">
+
+
+### Findings: Strategies to Boost Site Revenue
+
+**Number of Customers**
+
+Across all scenarios, we need to increase the number of customers by at least 24%. While this may seem like a significant increment, it can be achieved through gradual market development. Implementing targeted marketing campaigns, referral programs, and strategic partnerships can help attract new customers over time.
+
+**Menu Price**
+
+The necessary increase in menu price is modest, with the highest required increment being 2%. Without a clear understanding of market elasticity, we can conservatively raise prices by an average of 2%. This can be done by enhancing the perceived value of menu items through quality improvements and strategic menu redesign.
+
+**Marketing Spend**
+
+Increasing marketing spend by 5%, as suggested in the last scenario, appears realistic and is expected to significantly boost site revenue. Optimizing marketing strategies through ROI analysis, A/B testing, and data-driven campaigns will ensure that the increased budget is used effectively to attract and retain customers.
+
+**Revenue per Customer**
+
+To elevate sites from low to medium and medium to high revenue, we need to enhance the average revenue per customer by at least 75%. This substantial increase requires careful consideration of site-specific factors such as location, customer demographics, and spending behavior. Strategies like upselling, cross-selling, personalized marketing, and enhancing the overall customer experience will be crucial.
+
+**Relative Menu Price**
+
+This feature compares the menu price with the average customer spending. A value greater than 1 suggests a less price-sensitive clientele willing to pay more. To leverage this, we should aim to increase the perceived value by at least 14%, potentially through behavioral economics strategies like ending prices with 9 or 5. Highlighting premium offerings and ensuring high-quality service can also justify higher prices.
+
+**Reviews to Revenue Ratio**
+
+This metric examines the relationship between the number of reviews and monthly revenue. A high ratio may indicate that reviews significantly impact revenue, aiding in customer segmentation based on market response. However, our analysis shows no causal relationship between reviews and revenue. Therefore, for now, we can omit reviews, as all scenarios suggest reducing their emphasis.
+
+
+### Strategic Implementation
+
+
+<img src="img/roadmap-strategy.png" alt="roadmap-strategy" width="950">
