@@ -15,6 +15,10 @@
    + [notebook](Interpreting-ML-Models-Understanding-Key-Features.ipynb)
 - [Exploring Hypotheticals to Improve Revenue](#Exploring-Hypotheticals-to-Improve-Revenue)
    + [notebook](Interpreting-ML-Models-Understanding-Key-Features.ipynb)
+- [Strategies to Boost Site Revenue](#Strategies-to-Boost-Site-Revenue)
+   + [notebook](do-why.ipynb)
+- [Strategic Implementation](#Strategic-Implementation)
+   + [notebook](do-why.ipynb)   
 
 
 ### *Background*
@@ -706,7 +710,7 @@ In the final scenario, we analyze the key features needed to boost site revenue:
 <img src="img/scenario-2-dice.png" alt="scenario-2-dice" width="500">
 
 
-### Findings: Strategies to Boost Site Revenue
+### Strategies to Boost Site Revenue
 
 **Number of Customers**
 
