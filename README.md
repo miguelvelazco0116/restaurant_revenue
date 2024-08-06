@@ -18,7 +18,6 @@
 - [Strategies to Boost Site Revenue](#Strategies-to-Boost-Site-Revenue)
    + [notebook](do-why.ipynb)
 - [Strategic Implementation](#Strategic-Implementation)
-   + [notebook](do-why.ipynb)   
 
 
 ### *Background*
